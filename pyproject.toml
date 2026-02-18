@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "catalyst-cloud"
+version = "0.1.0"
+description = "Python client for the Catalyst Cloud neuromorphic compute API"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Catalyst Neuromorphic", email = "henry@catalyst-neuromorphic.com" },
+]
+keywords = ["neuromorphic", "spiking-neural-network", "SNN", "Loihi", "simulation", "cloud", "API"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "requests>=2.20",
+]
+
+[project.urls]
+Homepage = "https://catalyst-neuromorphic.com/cloud"
+Documentation = "https://catalyst-neuromorphic.com/cloud/docs"
+Repository = "https://github.com/Mr-wabbit/catalyst-cloud-python"
+Issues = "https://github.com/Mr-wabbit/catalyst-cloud-python/issues"
