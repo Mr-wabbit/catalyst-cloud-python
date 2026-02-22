@@ -29,6 +29,13 @@ dependencies = [
     "requests>=2.20",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "requests-mock>=1.11",
+    "ruff>=0.4",
+]
+
 [project.urls]
 Homepage = "https://catalyst-neuromorphic.com/cloud"
 Documentation = "https://catalyst-neuromorphic.com/cloud/docs"
