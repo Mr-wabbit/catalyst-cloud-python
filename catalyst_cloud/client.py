@@ -7,6 +7,7 @@ from typing import Optional
 
 class CatalystCloudError(Exception):
     """Raised when the API returns an error."""
+
     def __init__(self, status_code: int, detail: str):
         self.status_code = status_code
         self.detail = detail
@@ -34,10 +35,12 @@ class Client:
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self._session = requests.Session()
-        self._session.headers.update({
-            "X-API-Key": api_key,
-            "Content-Type": "application/json",
-        })
+        self._session.headers.update(
+            {
+                "X-API-Key": api_key,
+                "Content-Type": "application/json",
+            }
+        )
 
     def _request(self, method: str, path: str, **kwargs) -> dict:
         kwargs.setdefault("timeout", self.timeout)
@@ -53,7 +56,9 @@ class Client:
     # -- Signup (no auth required) --
 
     @classmethod
-    def signup(cls, email: str, tier: str = "free", base_url: str = DEFAULT_URL) -> dict:
+    def signup(
+        cls, email: str, tier: str = "free", base_url: str = DEFAULT_URL
+    ) -> dict:
         """Create a new account and get an API key.
 
         Args:
@@ -95,10 +100,14 @@ class Client:
         Returns:
             Dict with ``network_id``, ``total_neurons``, ``populations``, ``connections``.
         """
-        return self._request("POST", "/v1/networks", json={
-            "populations": populations,
-            "connections": connections or [],
-        })
+        return self._request(
+            "POST",
+            "/v1/networks",
+            json={
+                "populations": populations,
+                "connections": connections or [],
+            },
+        )
 
     # -- Jobs --
 
@@ -193,9 +202,7 @@ class Client:
             if status == "completed":
                 return result
             if status == "failed":
-                raise CatalystCloudError(
-                    500, result.get("error_message", "Job failed")
-                )
+                raise CatalystCloudError(500, result.get("error_message", "Job failed"))
 
             if time.monotonic() - start > max_wait:
                 raise TimeoutError(f"Job {job_id} did not complete within {max_wait}s")
