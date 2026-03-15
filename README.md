@@ -52,7 +52,7 @@ for pop, trains in spikes["spike_trains"].items():
 
 ## Features
 
-- **Hardware-accurate**: Full Loihi 2 parity — LIF neurons, dendritic compartments, STDP, 3-factor learning
+- **Hardware-accurate dynamics**: Loihi 2-class neuron dynamics, LIF neurons, dendritic compartments, STDP, 3-factor learning
 - **5 topologies**: all-to-all, one-to-one, random sparse, fixed fan-in, fixed fan-out
 - **Simple**: JSON in, spikes out. No boilerplate, no dependencies beyond `requests`
 - **Fast**: 1,000 neurons x 1,000 timesteps in under a second

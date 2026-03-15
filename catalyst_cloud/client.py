@@ -53,8 +53,6 @@ class Client:
             raise CatalystCloudError(resp.status_code, detail)
         return resp.json()
 
-    # -- Signup (no auth required) --
-
     @classmethod
     def signup(
         cls, email: str, tier: str = "free", base_url: str = DEFAULT_URL
@@ -82,8 +80,6 @@ class Client:
             raise CatalystCloudError(resp.status_code, detail)
         return resp.json()
 
-    # -- Networks --
-
     def create_network(
         self,
         populations: list[dict],
@@ -108,8 +104,6 @@ class Client:
                 "connections": connections or [],
             },
         )
-
-    # -- Jobs --
 
     def submit_job(
         self,
@@ -208,8 +202,6 @@ class Client:
                 raise TimeoutError(f"Job {job_id} did not complete within {max_wait}s")
 
             time.sleep(poll_interval)
-
-    # -- Usage --
 
     def usage(self) -> dict:
         """Get usage statistics for the current billing period.
